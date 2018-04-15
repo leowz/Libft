@@ -1,6 +1,7 @@
 # Libft - @42Born2Code
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 ![UnitTest](https://img.shields.io/badge/42UnitTest-pass-blue.svg)
+![42pass](https://img.shields.io/badge/42-pass-brightgreen.svg)
 
 An implementation of standard C library. A basic project of school 42 which will be used extensively in other projects of the curriculum of 42.
 
@@ -9,6 +10,7 @@ An implementation of standard C library. A basic project of school 42 which will
 * [What's in it?](#whats-in-it)
 * [How to use the library?](#how-to-use-the-library)
 * [Example usage](#example-usage)
+* [Grades](#grades)
 
 ### What is libft?
 Libft is an elementary project at school 42. The goal of this project is to reproduce the functionality of the standard C library. This project serves as the wheel for other 42 projects.
@@ -94,7 +96,7 @@ ft_arrsub		|					|
 
 and Voila!
 
-## Example usage
+### Example usage
 
 Libft is used in projects of algorithms, Unix and graphic extensively.
 
@@ -102,4 +104,6 @@ Libft is used in projects of algorithms, Unix and graphic extensively.
 * Fdf, fract'ol
 * ft_ls, 21sh
 
+## Grades
 
+Libft: 124/100
