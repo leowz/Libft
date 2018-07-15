@@ -26,7 +26,7 @@ STD_PATH 		= $(SRC_PATH)/ft_stdlib
 PRINTF_PATH 	= $(SRC_PATH)/ft_printf
 ARRAY_PATH 		= $(SRC_PATH)/ft_array
 
-SRC_NAME_STD 	=\
+SRC_NAME_STD =\
 			ft_memset.c \
 			ft_bzero.c \
 			ft_memcpy.c \
@@ -94,7 +94,7 @@ SRC_NAME_STD 	=\
 			ft_abs.c \
 			get_next_line.c \
 
-SRC_NAME_PRINTF = \
+SRC_NAME_PRINTF =\
 			ft_convert.c \
 		 	ft_convert_util.c \
 		 	ft_printf.c \
@@ -105,7 +105,7 @@ SRC_NAME_PRINTF = \
 			ft_vdprintf.c \
 		 	ft_wchar.c \
 
-SRC_NAME_ARR=\
+SRC_NAME_ARR =\
 			ft_arrnew.c\
 		 	ft_arritem_at.c\
 			ft_arr_realloc.c\
@@ -122,6 +122,11 @@ SRC_NAME_ARR=\
 			ft_arrqsort.c\
 			ft_arrmsort.c\
 
+OBJ_PATH =  obj
+OBJ_NAME =  $(SRC_NAME_STD:.c=.o)\
+            $(SRC_NAME_ARR:.c=.o) \
+            $(SRC_NAME_PRINTF:.c=.o)
+
 CPPFLAGS = -I$(HEADER_PATH) 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -129,7 +134,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS := $(addprefix $(STD_PATH)/,$(SRC_NAME_STD))\
 		$(addprefix $(ARRAY_PATH)/,$(SRC_NAME_ARR))\
 		$(addprefix $(PRINTF_PATH)/,$(SRC_NAME_PRINTF))
-OBJS := $(SRCS:.c=.o)
+OBJS := $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 # ----- Colors -----
 BLACK:="\033[1;30m"
@@ -150,20 +155,24 @@ $(NAME): $(OBJS)
 	@ranlib $(NAME)
 	@printf $(GREEN)"\r\E[K$(NAME) finish\n"$(END)
 
-$(STD_PATH)/%.o: $(STD_PATH)/%.c $(H_STD)
+$(OBJ_PATH)/%.o: $(STD_PATH)/%.c $(H_STD) | $(OBJ_PATH)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 	@printf $(GREEN)"\r\E[Kcompiling %s"$(GREEN) $<
 
-$(ARRAY_PATH)/%.o: $(ARRAY_PATH)/%.c $(H_STD) $(H_ARRAY)
+$(OBJ_PATH)/%.o: $(ARRAY_PATH)/%.c $(H_STD) $(H_ARRAY) | $(OBJ_PATH)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 	@printf $(GREEN)"\r\E[Kcompiling %s"$(GREEN) $<
 
-$(PRINTF_PATH)/%.o: $(PRINTF_PATH)/%.c $(H_STD) $(H_PRINTF)
+$(OBJ_PATH)/%.o: $(PRINTF_PATH)/%.c $(H_STD) $(H_PRINTF) | $(OBJ_PATH)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 	@printf $(GREEN)"\r\E[Kcompiling %s"$(GREEN) $<
+
+$(OBJ_PATH):
+	@mkdir $(OBJ_PATH) 2> /dev/null
 
 clean:
 	@rm -f $(OBJS)
+	@rmdir $(OBJ_PATH) 2> /dev/null || true
 	@printf $(GREEN)"$(NAME) clean\n"$(EOC)
 
 fclean: clean
