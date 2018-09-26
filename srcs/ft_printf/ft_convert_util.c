@@ -6,11 +6,11 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 21:40:44 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/12 19:45:31 by zweng            ###   ########.fr       */
+/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_convert.h"
+#include "ft_printf.h"
 
 void			ft_scanflag(const char **format_ptr, t_formatph *forma)
 {

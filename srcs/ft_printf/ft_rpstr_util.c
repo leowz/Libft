@@ -6,11 +6,11 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 16:45:02 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/04 20:04:46 by zweng            ###   ########.fr       */
+/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_rpstr.h"
+#include "ft_printf.h"
 
 static char		*ft_shift_p_u(char *ptr, uintmax_t val, int base,
 		t_formatph forma)

@@ -6,12 +6,11 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:41:49 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/07 19:59:28 by zweng            ###   ########.fr       */
+/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "ft_printf_private.h"
 
 int				ft_vdprintf(int fd, const char *format, va_list ap)
 {

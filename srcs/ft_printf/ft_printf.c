@@ -6,12 +6,11 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 13:08:56 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/12 20:06:26 by zweng            ###   ########.fr       */
+/*   Updated: 2018/09/26 19:42:59 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "ft_printf_private.h"
 
 /*
 ** printf function

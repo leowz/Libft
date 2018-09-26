@@ -6,12 +6,11 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 17:35:14 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/07 19:57:06 by zweng            ###   ########.fr       */
+/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_wchar.h"
-#include "ft_rpstr.h"
+#include "ft_printf.h"
 
 size_t			ft_wstrlen(const wchar_t *wstr)
 {

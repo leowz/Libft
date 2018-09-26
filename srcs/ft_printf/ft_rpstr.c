@@ -6,12 +6,11 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 11:53:31 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/07 19:54:06 by zweng            ###   ########.fr       */
+/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_wchar.h"
-#include "ft_rpstr.h"
+#include "ft_printf.h"
 
 static char		*ft_handle_type_uint(t_formatph forma, va_list ap)
 {
