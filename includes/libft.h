@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:44:47 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/13 14:26:34 by zweng            ###   ########.fr       */
+/*   Updated: 2018/10/07 16:58:30 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define MAX_FD 	(2048)
 # define FUN_SUCS 	(1)
 # define FUN_FAIL	(0)
+# define TRUE	 	(1)
+# define FALSE		(0)
 
 typedef struct		s_list
 {
