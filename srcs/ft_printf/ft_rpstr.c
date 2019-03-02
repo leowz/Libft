@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 11:53:31 by zweng             #+#    #+#             */
-/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
+/*   Updated: 2019/03/02 18:25:13 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static char		*ft_handle_type_uint(t_formatph forma, va_list ap)
 		val = va_arg(ap, uintmax_t);
 	else if (forma.length == PFLT_Z)
 		val = va_arg(ap, size_t);
-	else if (forma.length == PFLT_L || forma.type == PFTP_CO || forma.type ==
-			PFTP_CU)
+	else if (forma.length == PFLT_L || forma.type == PFTP_CO || forma.type
+			== PFTP_CU)
 		val = va_arg(ap, unsigned long int);
 	else
 		val = va_arg(ap, unsigned int);
@@ -70,8 +70,8 @@ static char		*ft_handle_charstr(t_formatph forma, va_list ap, size_t *n)
 
 	ret = 0;
 	size = 0;
-	if (forma.type == PFTP_CC || (forma.type == PFTP_C &&
-				forma.length == PFLT_L))
+	if (forma.type == PFTP_CC || (forma.type == PFTP_C
+				&& forma.length == PFLT_L))
 	{
 		if ((ret = ft_strnew(4)))
 			size = ft_widetoa(ret, va_arg(ap, wint_t));
@@ -83,8 +83,8 @@ static char		*ft_handle_charstr(t_formatph forma, va_list ap, size_t *n)
 			size = 1;
 		*n = forma.fieldwidth > 1 ? forma.fieldwidth : 1;
 	}
-	else if (forma.type == PFTP_CS || (forma.type == PFTP_S &&
-				forma.length == PFLT_L))
+	else if (forma.type == PFTP_CS || (forma.type == PFTP_S
+				&& forma.length == PFLT_L))
 		size = ft_wstrntomb(&ret, va_arg(ap, wchar_t *), forma.precision);
 	else
 		size = pf_handle_null_str(&ret, va_arg(ap, char *), forma.precision);
@@ -130,8 +130,8 @@ size_t			ft_rpstr(char **buf, t_formatph forma, va_list ap)
 		ret = ft_handle_type_int(forma, ap);
 	else if (forma.type >= PFTP_O && forma.type <= PFTP_CX)
 		ret = ft_handle_type_uint(forma, ap);
-	else if (forma.type == PFTP_S || forma.type == PFTP_CS ||
-			forma.type == PFTP_C || forma.type == PFTP_CC)
+	else if (forma.type == PFTP_S || forma.type == PFTP_CS
+			|| forma.type == PFTP_C || forma.type == PFTP_CC)
 		ret = ft_handle_charstr(forma, ap, &size);
 	else
 		ret = ft_handle_p_pc(forma, ap);

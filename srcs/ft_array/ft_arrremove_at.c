@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 14:29:31 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/09 15:25:58 by zweng            ###   ########.fr       */
+/*   Updated: 2019/03/02 18:23:37 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_arritem	*ft_arrremove_at(t_array *arr, int index)
 	t_arritem	tmp;
 	t_arritem	*ret;
 
-	if (!arr || (int)arr->current_size <= 0 || index < 0 ||
-			index > (int)arr->current_size)
+	if (!arr || (int)arr->current_size <= 0 || index < 0
+			|| index > (int)arr->current_size)
 		return (NULL);
 	if (index == (int)arr->current_size - 1)
 	{
