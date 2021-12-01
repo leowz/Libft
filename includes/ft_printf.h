@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 13:09:33 by zweng             #+#    #+#             */
-/*   Updated: 2018/09/26 19:55:21 by zweng            ###   ########.fr       */
+/*   Updated: 2021/12/01 21:15:44 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stdint.h>
 # include <wchar.h>
 # include "libft.h"
 
