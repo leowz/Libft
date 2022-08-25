@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 21:50:40 by zweng             #+#    #+#             */
-/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
+/*   Updated: 2022/08/25 16:05:13 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ size_t		pf_handle_null_str(char **buf, const char *str, int n)
 	}
 	if (n == PRC_NO)
 		return (ret);
-	return ((int)ret < n ? ret : n);
+	return ((int)ret < n ? (int)ret : n);
 }
 
 int			pf_get_base(const t_formatph forma)

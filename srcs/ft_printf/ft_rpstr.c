@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 11:53:31 by zweng             #+#    #+#             */
-/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
+/*   Updated: 2022/08/25 16:03:51 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char		*ft_handle_charstr(t_formatph forma, va_list ap, size_t *n)
 	{
 		if ((ret = ft_strnew(4)))
 			size = ft_widetoa(ret, va_arg(ap, wint_t));
-		*n = forma.fieldwidth > (int)size ? forma.fieldwidth : size;
+		*n = forma.fieldwidth > (int)size ? forma.fieldwidth : (int)size;
 	}
 	else if (forma.type == PFTP_C)
 	{
