@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 19:32:02 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/10 20:23:56 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/15 12:47:34 by vagrant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,7 @@ void			ft_arrqsort(t_array *arr, int (*cmp)(t_arritem *lhs,
 				t_arritem *rhs));
 void			ft_arrmsort(t_array *arr, int (*cmp)(t_arritem *lhs,
 				t_arritem *rhs));
+void			ft_arrbubblesort(t_array *arr, int (*cmp)(t_arritem *lhs,
+				t_arritem *rhs));
+void            ft_arrforeach(t_array *arr, void (*f)(t_arritem *));
 #endif
