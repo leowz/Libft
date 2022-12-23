@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_ternary.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: zweng <zweng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 14:32:44 by zweng             #+#    #+#             */
-/*   Updated: 2022/12/23 16:40:34 by zweng            ###   ########.fr       */
+/*   Created: 2022/12/16 19:51:12 by zweng             #+#    #+#             */
+/*   Updated: 2022/12/23 17:33:15 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_ternary(int x, const char *s1, const char *s2)
 {
-	char	*ret;
+	if (x)
+		return ((char *)s1);
+	else
+		return ((char *)s2);
+}
 
-	ret = dst;
-	while (1)
-	{
-		if (!len--)
-			return (ret);
-		else if ((*dst++ = *src++) == 0)
-			break ;
-	}
-	while (len--)
-		*dst++ = 0;
-	return (ret);
+int	ft_ternary_int(int x, const int n1, const int n2)
+{
+	if (x)
+		return (n1);
+	else
+		return (n2);
 }

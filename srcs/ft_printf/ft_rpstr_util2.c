@@ -6,13 +6,13 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 21:50:40 by zweng             #+#    #+#             */
-/*   Updated: 2022/08/25 16:05:13 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 20:04:57 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*pf_add_prefix_str(char *str, const char *str_to_add)
+char	*pf_add_prefix_str(char *str, const char *str_to_add)
 {
 	char	*ret;
 
@@ -21,7 +21,7 @@ char		*pf_add_prefix_str(char *str, const char *str_to_add)
 	return (ret);
 }
 
-char		*ft_strndup(char *str, size_t size)
+char	*ft_strndup(char *str, size_t size)
 {
 	char	*ret;
 	char	*tmp;
@@ -29,24 +29,26 @@ char		*ft_strndup(char *str, size_t size)
 	ret = ft_strdup(str);
 	if (ft_strlen(str) < size)
 		return (ret);
-	if (!(tmp = ft_strnew(size)))
+	tmp = ft_strnew(size);
+	if (!tmp)
 		return (NULL);
 	ft_memcpy(tmp, ret, size);
 	ft_strdel(&ret);
 	return (tmp);
 }
 
-char		*pf_handle_null_c(const char c)
+char	*pf_handle_null_c(const char c)
 {
 	char	*ret;
 
-	if (!(ret = ft_strnew(1)))
+	ret = ft_strnew(1);
+	if (!ret)
 		return (NULL);
 	*ret = c;
 	return (ret);
 }
 
-size_t		pf_handle_null_str(char **buf, const char *str, int n)
+size_t	pf_handle_null_str(char **buf, const char *str, int n)
 {
 	size_t	ret;
 
@@ -71,10 +73,10 @@ size_t		pf_handle_null_str(char **buf, const char *str, int n)
 	}
 	if (n == PRC_NO)
 		return (ret);
-	return ((int)ret < n ? (int)ret : n);
+	return (ft_ternary_int((int)ret < n, (int)ret, n));
 }
 
-int			pf_get_base(const t_formatph forma)
+int	pf_get_base(const t_formatph forma)
 {
 	int		base;
 

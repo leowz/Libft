@@ -6,18 +6,21 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 16:45:02 by zweng             #+#    #+#             */
-/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/23 16:34:41 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char		*ft_shift_p_u(char *ptr, uintmax_t val, int base,
+static char	*ft_shift_p_u(char *ptr, uintmax_t val, int base,
 		t_formatph forma)
 {
 	int			str_size;
 
-	str_size = val == 0 ? 1 : 0;
+	if (val == 0)
+		str_size = 1;
+	else
+		str_size = 0;
 	while (val)
 	{
 		str_size++;
@@ -31,12 +34,15 @@ static char		*ft_shift_p_u(char *ptr, uintmax_t val, int base,
 	return (ptr);
 }
 
-static char		*ft_shift_p(char *ptr, intmax_t val, int base,
+static char	*ft_shift_p(char *ptr, intmax_t val, int base,
 		t_formatph forma)
 {
 	int			str_size;
 
-	str_size = val == 0 ? 1 : 0;
+	if (val == 0)
+		str_size = 1;
+	else
+		str_size = 0;
 	while (val)
 	{
 		str_size++;
@@ -50,7 +56,7 @@ static char		*ft_shift_p(char *ptr, intmax_t val, int base,
 	return (ptr);
 }
 
-static void		ft_aux_u(uintmax_t val, int base, char **p,
+static void	ft_aux_u(uintmax_t val, int base, char **p,
 		const char *base_str)
 {
 	int			tmp;
@@ -61,7 +67,7 @@ static void		ft_aux_u(uintmax_t val, int base, char **p,
 	*(*p)++ = *(base_str + ft_abs(tmp));
 }
 
-static void		ft_aux(intmax_t val, int base, char **p, const char *base_str)
+static void	ft_aux(intmax_t val, int base, char **p, const char *base_str)
 {
 	int			tmp;
 
@@ -71,7 +77,7 @@ static void		ft_aux(intmax_t val, int base, char **p, const char *base_str)
 	*(*p)++ = *(base_str + ft_abs(tmp));
 }
 
-char			*pf_itoa_base(uintmax_t value, t_formatph forma)
+char	*pf_itoa_base(uintmax_t value, t_formatph forma)
 {
 	char		*ret;
 	char		*p;
@@ -79,10 +85,12 @@ char			*pf_itoa_base(uintmax_t value, t_formatph forma)
 	int			base;
 	const char	*base_str;
 
-	base_str = forma.type == PFTP_CX ? "0123456789ABCDEF" : "0123456789abcdef";
+	base_str = ft_ternary(forma.type == PFTP_CX, "0123456789ABCDEF",
+			"0123456789abcdef");
 	base = pf_get_base(forma);
-	size = forma.precision > 70 ? (forma.precision + 1) : 70;
-	if ((forma.precision == 0 && value == 0) || !(ret = (char *)malloc(size)))
+	size = ft_ternary_int(forma.precision > 70, (forma.precision + 1), 70);
+	ret = (char *)malloc(size);
+	if ((forma.precision == 0 && value == 0) || !ret)
 		return (ft_strnew(0));
 	if (forma.type <= PFTP_I && forma.type >= PFTP_D)
 	{

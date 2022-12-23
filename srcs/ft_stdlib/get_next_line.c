@@ -6,13 +6,13 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 12:31:08 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/13 14:26:21 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/23 16:48:53 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*ft_prep_line(t_fd *file, void *newline)
+static char	*ft_prep_line(t_fd *file, void *newline)
 {
 	int		offset;
 	char	*ret;
@@ -29,7 +29,7 @@ static char		*ft_prep_line(t_fd *file, void *newline)
 	return (ret);
 }
 
-static char		*ft_last_line(t_fd *file)
+static char	*ft_last_line(t_fd *file)
 {
 	char	*ret;
 
@@ -47,7 +47,7 @@ static char		*ft_last_line(t_fd *file)
 	return (ft_strnew(1));
 }
 
-static t_fd		*ft_realloc(t_fd *file)
+static t_fd	*ft_realloc(t_fd *file)
 {
 	char	*tmp;
 
@@ -60,7 +60,7 @@ static t_fd		*ft_realloc(t_fd *file)
 	return (file);
 }
 
-static char		*ft_getline(t_fd *arr, const int fd)
+static char	*ft_getline(t_fd *arr, const int fd)
 {
 	int		read_ret;
 	void	*newline;
@@ -89,9 +89,9 @@ static char		*ft_getline(t_fd *arr, const int fd)
 	return (ft_prep_line(file, newline));
 }
 
-int				get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
-	static	t_fd	array[MAX_FD];
+	static t_fd	array[MAX_FD];
 
 	if (fd < 0 || fd >= MAX_FD || !line)
 		return (-1);

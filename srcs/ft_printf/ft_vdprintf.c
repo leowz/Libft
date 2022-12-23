@@ -6,13 +6,13 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:41:49 by zweng             #+#    #+#             */
-/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 20:06:47 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int				ft_vdprintf(int fd, const char *format, va_list ap)
+int	ft_vdprintf(int fd, const char *format, va_list ap)
 {
 	char		*str;
 	int			ret;
@@ -39,7 +39,8 @@ static size_t	ft_memjoin(char **s1, size_t n1, char *s2, size_t n2)
 		*s1 = s2;
 		return (n2);
 	}
-	if (!(tmp = ft_strnew(n1 + n2)))
+	tmp = ft_strnew(n1 + n2);
+	if (!tmp)
 		return (0);
 	ft_memcpy(tmp, *s1, n1);
 	ft_memcpy(tmp + n1, s2, n2);
@@ -49,15 +50,15 @@ static size_t	ft_memjoin(char **s1, size_t n1, char *s2, size_t n2)
 	return (n1 + n2);
 }
 
-static void		pf_join(char **s, const char *format, const char *ptr,
+static void	pf_join(char **s, const char *format, const char *ptr,
 		size_t *size)
 {
 	if (format > ptr)
 		*size = ft_memjoin(s, *size, ft_strsub(ptr, 0, format - ptr),
-						format - ptr);
+				format - ptr);
 }
 
-int				ft_vasprintf(char **s, const char *format, va_list ap)
+int	ft_vasprintf(char **s, const char *format, va_list ap)
 {
 	t_formatph	forma;
 	const char	*ptr;

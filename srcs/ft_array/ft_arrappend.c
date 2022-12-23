@@ -6,13 +6,13 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 20:52:32 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/09 16:16:32 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:23:38 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_array.h"
 
-int		ft_arrappend(t_array *arr, const t_arritem *item)
+int	ft_arrappend(t_array *arr, const t_arritem *item)
 {
 	if (!arr || !item)
 		return (FUN_FAIL);
@@ -26,7 +26,7 @@ int		ft_arrappend(t_array *arr, const t_arritem *item)
 	return (FUN_SUCS);
 }
 
-int		ft_arrappend_raw(t_array *arr, void *data, size_t size)
+int	ft_arrappend_raw(t_array *arr, void *data, size_t size)
 {
 	t_arritem	tmp;
 

@@ -6,13 +6,13 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 11:53:31 by zweng             #+#    #+#             */
-/*   Updated: 2022/08/25 16:08:53 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/23 17:34:13 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char		*ft_handle_type_uint(t_formatph forma, va_list ap)
+static char	*ft_handle_type_uint(t_formatph forma, va_list ap)
 {
 	char		*ret;
 	uintmax_t	val;
@@ -29,16 +29,17 @@ static char		*ft_handle_type_uint(t_formatph forma, va_list ap)
 	else if (forma.length == PFLT_Z)
 		val = va_arg(ap, size_t);
 	else if (forma.length == PFLT_L || forma.type == PFTP_CO || forma.type
-			== PFTP_CU)
+		== PFTP_CU)
 		val = va_arg(ap, unsigned long int);
 	else
 		val = va_arg(ap, unsigned int);
-	if (!(ret = pf_itoa_base(val, forma)))
+	ret = pf_itoa_base(val, forma);
+	if (!ret)
 		return (NULL);
 	return (ft_handle_format_uint(ret, forma));
 }
 
-static char		*ft_handle_type_int(t_formatph forma, va_list ap)
+static char	*ft_handle_type_int(t_formatph forma, va_list ap)
 {
 	char		*ret;
 	intmax_t	val;
@@ -58,12 +59,13 @@ static char		*ft_handle_type_int(t_formatph forma, va_list ap)
 		val = va_arg(ap, ssize_t);
 	else
 		val = va_arg(ap, int);
-	if (!(ret = pf_itoa_base(val, forma)))
+	ret = pf_itoa_base(val, forma);
+	if (!ret)
 		return (NULL);
 	return (ft_handle_format_int(ret, val, forma));
 }
 
-static char		*ft_handle_charstr(t_formatph forma, va_list ap, size_t *n)
+static char	*ft_handle_charstr(t_formatph forma, va_list ap, size_t *n)
 {
 	char		*ret;
 	size_t		size;
@@ -71,27 +73,28 @@ static char		*ft_handle_charstr(t_formatph forma, va_list ap, size_t *n)
 	ret = 0;
 	size = 0;
 	if (forma.type == PFTP_CC || (forma.type == PFTP_C
-				&& forma.length == PFLT_L))
+			&& forma.length == PFLT_L))
 	{
 		if ((ret = ft_strnew(4)))
 			size = ft_widetoa(ret, va_arg(ap, wint_t));
-		*n = forma.fieldwidth > (int)size ? forma.fieldwidth : (int)size;
+		*n = ft_ternary_int(forma.fieldwidth > (int)size,
+				forma.fieldwidth, (int)size);
 	}
 	else if (forma.type == PFTP_C)
 	{
 		if ((ret = pf_handle_null_c(va_arg(ap, unsigned int))))
 			size = 1;
-		*n = forma.fieldwidth > 1 ? forma.fieldwidth : 1;
+		*n = ft_ternary_int(forma.fieldwidth > 1, forma.fieldwidth, 1);
 	}
 	else if (forma.type == PFTP_CS || (forma.type == PFTP_S
-				&& forma.length == PFLT_L))
+			&& forma.length == PFLT_L))
 		size = ft_wstrntomb(&ret, va_arg(ap, wchar_t *), forma.precision);
 	else
 		size = pf_handle_null_str(&ret, va_arg(ap, char *), forma.precision);
 	return (ft_handle_format_charstr(ret, size, forma));
 }
 
-static char		*ft_handle_p_pc(t_formatph forma, va_list ap)
+static char	*ft_handle_p_pc(t_formatph forma, va_list ap)
 {
 	char		*ret;
 
@@ -107,7 +110,8 @@ static char		*ft_handle_p_pc(t_formatph forma, va_list ap)
 	}
 	else
 	{
-		if (!(ret = ft_strnew(1)))
+		ret = ft_strnew(1);
+		if (!ret)
 			return (NULL);
 		else if (forma.type > PFTP_N)
 			*ret = forma.type - PFTP_PC;
@@ -119,7 +123,7 @@ static char		*ft_handle_p_pc(t_formatph forma, va_list ap)
 	return (ret);
 }
 
-size_t			ft_rpstr(char **buf, t_formatph forma, va_list ap)
+size_t	ft_rpstr(char **buf, t_formatph forma, va_list ap)
 {
 	char		*ret;
 	size_t		size;
@@ -131,7 +135,7 @@ size_t			ft_rpstr(char **buf, t_formatph forma, va_list ap)
 	else if (forma.type >= PFTP_O && forma.type <= PFTP_CX)
 		ret = ft_handle_type_uint(forma, ap);
 	else if (forma.type == PFTP_S || forma.type == PFTP_CS
-			|| forma.type == PFTP_C || forma.type == PFTP_CC)
+		|| forma.type == PFTP_C || forma.type == PFTP_CC)
 		ret = ft_handle_charstr(forma, ap, &size);
 	else
 		ret = ft_handle_p_pc(forma, ap);

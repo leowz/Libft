@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 13:09:33 by zweng             #+#    #+#             */
-/*   Updated: 2022/08/25 16:09:14 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:56:50 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@
 # define FTPF_LH	"hlzjL"
 # define PRC_NO		(-2147483647)
 
-typedef struct		s_formatph
+typedef struct s_formatph
 {
 	int				param;
 	int				flags;
@@ -81,8 +81,8 @@ typedef struct		s_formatph
 	int				type;
 }					t_formatph;
 
-size_t				ft_convert(char **buf, const char **format, t_formatph
-					*forma, va_list ap);
+size_t				ft_convert(char **buf, const char **format,
+						t_formatph *forma, va_list ap);
 size_t				ft_rpstr(char **buf, t_formatph forma, va_list ap);
 
 int					ft_printf(const char *format, ...);
@@ -93,17 +93,17 @@ int					ft_vasprintf(char **s, const char *format, va_list ap);
 
 void				ft_scanflag(const char **format_ptr, t_formatph *forma);
 void				ft_scan_width(const char **format_ptr,
-					t_formatph *forma, va_list ap);
+						t_formatph *forma, va_list ap);
 void				ft_scan_precision(const char **format_ptr,
-					t_formatph *forma, va_list ap);
+						t_formatph *forma, va_list ap);
 void				ft_scanlength(const char **format_ptr, t_formatph *forma);
 void				ft_scantype(const char **format_ptr, t_formatph *forma);
 
 char				*ft_handle_format_uint(char *rawstr, t_formatph forma);
 char				*ft_handle_format_int(char *rawstr, intmax_t val,
-					t_formatph forma);
+						t_formatph forma);
 char				*ft_handle_format_charstr(char *rawstr, size_t len,
-					t_formatph forma);
+						t_formatph forma);
 char				*pf_itoa_base(uintmax_t val, t_formatph forma);
 char				*pf_add_prefix_str(char *str, const char *str_to_add);
 char				*ft_strndup(char *str, size_t size);

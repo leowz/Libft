@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 16:09:23 by zweng             #+#    #+#             */
-/*   Updated: 2017/11/11 12:14:22 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/23 16:38:41 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	size_t n;
+	size_t	n;
 
 	n = ft_strlen(needle);
 	if (n == 0)

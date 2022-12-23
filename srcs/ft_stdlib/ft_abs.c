@@ -6,13 +6,16 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 19:38:37 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/12 19:39:19 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/23 17:25:00 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_abs(int n)
+int	ft_abs(int n)
 {
-	return (n < 0 ? -n : n);
+	if (n < 0)
+		return (-n);
+	else
+		return (n);
 }

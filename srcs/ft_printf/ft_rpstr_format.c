@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 20:28:11 by zweng             #+#    #+#             */
-/*   Updated: 2019/03/02 18:27:20 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:55:55 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	pf_handle_sign(char *str)
 	while (str[i])
 	{
 		if (str[i] == '+' || str[i] == '-' || str[i] == ' ' || str[i] == 'x'
-				|| str[i] == 'X')
+			|| str[i] == 'X')
 			break ;
 		i++;
 	}
@@ -36,12 +36,13 @@ static void	pf_handle_sign(char *str)
 	}
 }
 
-char		*pf_padding(char *rawstr, size_t len, t_formatph forma)
+char	*pf_padding(char *rawstr, size_t len, t_formatph forma)
 {
 	char	*ret;
 	char	tmp;
 
-	if (!(ret = ft_strnew(forma.fieldwidth)))
+	ret = ft_strnew(forma.fieldwidth);
+	if (!ret)
 		return (NULL);
 	if ((forma.flags & PFFL_MI) == PFFL_MI)
 	{
@@ -52,28 +53,29 @@ char		*pf_padding(char *rawstr, size_t len, t_formatph forma)
 	{
 		tmp = ' ';
 		if ((forma.flags & PFFL_ZR) == PFFL_ZR && (forma.precision == PRC_NO
-					|| forma.type > PFTP_CX || forma.type < PFTP_D))
+				|| forma.type > PFTP_CX || forma.type < PFTP_D))
 			tmp = '0';
 		ft_memset(ret, tmp, forma.fieldwidth);
 		ft_memcpy(ret + (forma.fieldwidth - len), rawstr, len);
 		if (tmp == '0' && ((forma.type >= PFTP_D && forma.type <= PFTP_CX)
-					|| forma.type == PFTP_P))
+				|| forma.type == PFTP_P))
 			pf_handle_sign(ret);
 	}
 	ft_strdel(&rawstr);
 	return (ret);
 }
 
-char		*ft_handle_format_uint(char *rawstr, t_formatph forma)
+char	*ft_handle_format_uint(char *rawstr, t_formatph forma)
 {
 	int		len;
 
 	len = ft_strlen(rawstr);
 	if ((forma.type == PFTP_X || forma.type == PFTP_CX)
-			&& (forma.flags & PFFL_HT) == PFFL_HT && (ft_strcmp(rawstr, "0")
-				|| forma.type == PFTP_P) && ft_strcmp(rawstr, ""))
+		&& (forma.flags & PFFL_HT) == PFFL_HT && (ft_strcmp(rawstr, "0")
+			|| forma.type == PFTP_P) && ft_strcmp(rawstr, ""))
 	{
-		rawstr = pf_add_prefix_str(rawstr, forma.type == PFTP_CX ? "0X" : "0x");
+		rawstr = pf_add_prefix_str(rawstr,
+				ft_ternary(forma.type == PFTP_CX, "0X", "0x"));
 		len += 2;
 	}
 	if (forma.type == PFTP_P)
@@ -82,7 +84,7 @@ char		*ft_handle_format_uint(char *rawstr, t_formatph forma)
 		len += 2;
 	}
 	if ((forma.type == PFTP_O || forma.type == PFTP_CO)
-			&& (forma.flags & PFFL_HT) == PFFL_HT && *rawstr != '0')
+		&& (forma.flags & PFFL_HT) == PFFL_HT && *rawstr != '0')
 	{
 		rawstr = pf_add_prefix_str(rawstr, "0");
 		len += 1;
@@ -92,19 +94,19 @@ char		*ft_handle_format_uint(char *rawstr, t_formatph forma)
 	return (rawstr);
 }
 
-char		*ft_handle_format_int(char *rawstr, intmax_t val, t_formatph forma)
+char	*ft_handle_format_int(char *rawstr, intmax_t val, t_formatph forma)
 {
 	int		len;
 
 	len = ft_strlen(rawstr);
 	if ((forma.flags & PFFL_PL) == PFFL_PL)
 	{
-		rawstr = pf_add_prefix_str(rawstr, val >= 0 ? "+" : "-");
+		rawstr = pf_add_prefix_str(rawstr, ft_ternary(val >= 0, "+", "-"));
 		len += 1;
 	}
 	else if ((forma.flags & PFFL_SP) == PFFL_SP)
 	{
-		rawstr = pf_add_prefix_str(rawstr, val >= 0 ? " " : "-");
+		rawstr = pf_add_prefix_str(rawstr, ft_ternary(val >= 0, " ", "-"));
 		len += 1;
 	}
 	else if (val < 0)
@@ -117,7 +119,7 @@ char		*ft_handle_format_int(char *rawstr, intmax_t val, t_formatph forma)
 	return (rawstr);
 }
 
-char		*ft_handle_format_charstr(char *rawstr, size_t len,
+char	*ft_handle_format_charstr(char *rawstr, size_t len,
 		t_formatph forma)
 {
 	if (forma.fieldwidth > (int)len)

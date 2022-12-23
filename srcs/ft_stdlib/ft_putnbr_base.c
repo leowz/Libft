@@ -6,13 +6,13 @@
 /*   By: zweng <zweng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 17:10:22 by zweng             #+#    #+#             */
-/*   Updated: 2022/10/07 16:11:02 by vagrant          ###   ########.fr       */
+/*   Updated: 2022/12/23 17:27:48 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		check_base(char *base)
+int	check_base(char *base)
 {
 	int	i;
 	int	z;

@@ -6,13 +6,13 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 21:40:44 by zweng             #+#    #+#             */
-/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/23 16:32:48 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void			ft_scanflag(const char **format_ptr, t_formatph *forma)
+void	ft_scanflag(const char **format_ptr, t_formatph *forma)
 {
 	const char	*ptr;
 
@@ -34,7 +34,7 @@ void			ft_scanflag(const char **format_ptr, t_formatph *forma)
 	*format_ptr = ptr;
 }
 
-void			ft_scan_width(const char **format_ptr,
+void	ft_scan_width(const char **format_ptr,
 		t_formatph *forma, va_list ap)
 {
 	const char	*ptr;
@@ -58,7 +58,7 @@ void			ft_scan_width(const char **format_ptr,
 	*format_ptr = ptr;
 }
 
-void			ft_scan_precision(const char **format_ptr,
+void	ft_scan_precision(const char **format_ptr,
 		t_formatph *forma, va_list ap)
 {
 	const char	*ptr;
@@ -82,7 +82,7 @@ void			ft_scan_precision(const char **format_ptr,
 	*format_ptr = ptr;
 }
 
-void			ft_scanlength(const char **format_ptr, t_formatph *forma)
+void	ft_scanlength(const char **format_ptr, t_formatph *forma)
 {
 	const char	*ptr;
 
@@ -107,7 +107,7 @@ void			ft_scanlength(const char **format_ptr, t_formatph *forma)
 	*format_ptr = ptr;
 }
 
-void			ft_scantype(const char **format_ptr, t_formatph *forma)
+void	ft_scantype(const char **format_ptr, t_formatph *forma)
 {
 	const char	*ptr;
 	int			i;
@@ -120,7 +120,8 @@ void			ft_scantype(const char **format_ptr, t_formatph *forma)
 	{
 		if (*ptr == type_str[i] || i == PFTP_N)
 		{
-			forma->type = *ptr == type_str[i] ? i : PFTP_PC + (int)*ptr;
+			forma->type = ft_ternary_int(*ptr == type_str[i], i,
+					PFTP_PC + (int)*ptr);
 			*format_ptr += 1;
 			if (*ptr == 'D' || *ptr == 'O' || *ptr == 'U')
 				forma->length = 0;

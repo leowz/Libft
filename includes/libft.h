@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:44:47 by zweng             #+#    #+#             */
-/*   Updated: 2022/10/07 16:11:26 by vagrant          ###   ########.fr       */
+/*   Updated: 2022/12/23 15:50:44 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@
 # define TRUE	 	(1)
 # define FALSE		(0)
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_fd
+typedef struct s_fd
 {
 	int				open_flag;
 	size_t			bytes_read;
@@ -59,7 +59,7 @@ char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack, const char *needle,
-					size_t len);
+						size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *str);
@@ -91,7 +91,7 @@ void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
-void                ft_putnbr_base(int nbr, char *base);
+void				ft_putnbr_base(int nbr, char *base);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *str, int fd);
 void				ft_putendl_fd(char const *s, int fd);
@@ -109,4 +109,6 @@ void				ft_lstprint(t_list *alst);
 int					ft_abs(int n);
 size_t				ft_lstsize(t_list *lst);
 int					get_next_line(const int fd, char **line);
+char				*ft_ternary(int x, const char *s1, const char *s2);
+int					ft_ternary_int(int x, const int n1, const int n2);
 #endif

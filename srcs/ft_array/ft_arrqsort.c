@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:09:00 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/10 19:42:10 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:37:18 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	pf_qsort(t_array *arr, int start, int end, int (*cmp)
 	}
 }
 
-void		ft_arrqsort(t_array *arr, int (*cmp)(t_arritem *,
+void	ft_arrqsort(t_array *arr, int (*cmp)(t_arritem *,
 			t_arritem *))
 {
 	if (!arr || !cmp || arr->current_size <= 1)

@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 19:52:08 by zweng             #+#    #+#             */
-/*   Updated: 2019/03/02 18:22:23 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:42:12 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ void	pf_mergesort(t_array *arr, int nbr, int (*cmp)
 	t_array		*right;
 
 	mid = (nbr - 1) / 2;
-	if (nbr < 2 || !(left = ft_arrsub(arr, 0, mid))
-			|| !(right = ft_arrsub(arr, mid + 1, nbr - 1)))
+	left = ft_arrsub(arr, 0, mid);
+	right = ft_arrsub(arr, mid + 1, nbr - 1);
+	if (nbr < 2 || !left || !right)
 		return ;
 	pf_mergesort(left, left->current_size, cmp);
 	pf_mergesort(right, right->current_size, cmp);

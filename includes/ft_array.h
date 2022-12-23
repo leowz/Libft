@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 19:32:02 by zweng             #+#    #+#             */
-/*   Updated: 2022/12/15 12:47:34 by vagrant          ###   ########.fr       */
+/*   Updated: 2022/12/16 19:19:09 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 # include "libft.h"
 # define ARRAY_SIZE	(20)
 
-typedef struct	s_arritem
+typedef struct s_arritem
 {
 	size_t		content_size;
 	void		*content;
 }				t_arritem;
 
-typedef struct	s_array
+typedef struct s_array
 {
 	size_t		current_size;
 	size_t		max_size;
@@ -40,7 +40,7 @@ int				ft_arrappend_raw(t_array *arr, void *data, size_t size);
 int				ft_arr_realloc(t_array *arr);
 int				ft_arrinsert(t_array *arr, const t_arritem *item, int index);
 int				ft_arrinsert_raw(t_array *arr, void *data, size_t size,
-				int index);
+					int index);
 int				ft_arrswap(t_array *arr, int index1, int index2);
 t_arritem		*ft_arrremove_at(t_array *arr, int index);
 t_arritem		*ft_arritem_at(t_array *arr, int index);
@@ -64,10 +64,10 @@ t_arritem		*ft_arrqueue_peek(t_array *queue);
 ** t_array util functions
 */
 void			ft_arrqsort(t_array *arr, int (*cmp)(t_arritem *lhs,
-				t_arritem *rhs));
+						t_arritem *rhs));
 void			ft_arrmsort(t_array *arr, int (*cmp)(t_arritem *lhs,
-				t_arritem *rhs));
+						t_arritem *rhs));
 void			ft_arrbubblesort(t_array *arr, int (*cmp)(t_arritem *lhs,
-				t_arritem *rhs));
-void            ft_arrforeach(t_array *arr, void (*f)(t_arritem *));
+						t_arritem *rhs));
+void			ft_arrforeach(t_array *arr, void (*f)(t_arritem *));
 #endif

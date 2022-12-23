@@ -6,13 +6,13 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 15:04:12 by zweng             #+#    #+#             */
-/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:43:51 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		pf_init_forma(t_formatph *forma)
+static void	pf_init_forma(t_formatph *forma)
 {
 	forma->param = 0;
 	forma->flags = 0;
@@ -22,7 +22,7 @@ static void		pf_init_forma(t_formatph *forma)
 	forma->type = 0;
 }
 
-static void		ft_scan(const char **format, t_formatph *forma, va_list ap)
+static void	ft_scan(const char **format, t_formatph *forma, va_list ap)
 {
 	const char	*ptr;
 
@@ -48,8 +48,8 @@ static void		ft_scan(const char **format, t_formatph *forma, va_list ap)
 	forma->type = -1;
 }
 
-size_t			ft_convert(char **buf, const char **format, t_formatph *forma,
-				va_list ap)
+size_t	ft_convert(char **buf, const char **format, t_formatph *forma,
+			va_list ap)
 {
 	if (**format == '%')
 		(*format)++;
@@ -63,7 +63,8 @@ size_t			ft_convert(char **buf, const char **format, t_formatph *forma,
 	}
 	if (forma->length < 0 || forma->type < 0)
 	{
-		if (!(*buf = ft_strnew(0)))
+		*buf = ft_strnew(0);
+		if (!(*buf))
 			exit(1);
 		return (0);
 	}

@@ -6,13 +6,13 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 16:58:59 by zweng             #+#    #+#             */
-/*   Updated: 2018/03/09 17:22:00 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:30:41 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_array.h"
 
-int			ft_arrstack_push(t_array *stack, t_arritem *item)
+int	ft_arrstack_push(t_array *stack, t_arritem *item)
 {
 	if (!stack || !item)
 		return (FUN_FAIL);

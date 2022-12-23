@@ -6,13 +6,13 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 17:35:14 by zweng             #+#    #+#             */
-/*   Updated: 2018/09/26 19:43:53 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/23 15:41:26 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t			ft_wstrlen(const wchar_t *wstr)
+size_t	ft_wstrlen(const wchar_t *wstr)
 {
 	const wchar_t	*ptr;
 
@@ -22,7 +22,7 @@ size_t			ft_wstrlen(const wchar_t *wstr)
 	return ((size_t)(ptr - wstr));
 }
 
-size_t			ft_widetoa(char *buf, wint_t w)
+size_t	ft_widetoa(char *buf, wint_t w)
 {
 	char	*ptr;
 
@@ -50,16 +50,17 @@ size_t			ft_widetoa(char *buf, wint_t w)
 	return (buf - ptr);
 }
 
-char			*ft_wstrtomb(const wchar_t *wstr)
+char	*ft_wstrtomb(const wchar_t *wstr)
 {
 	char	*ret;
 	size_t	i;
 
 	i = 0;
-	if (!(ret = ft_strnew(ft_wstrlen(wstr) * 4)))
+	ret = ft_strnew(ft_wstrlen(wstr) * 4);
+	if (!ret)
 		return (NULL);
 	while (*wstr)
-		i += ft_widetoa(ret + i, (wint_t)*(wstr++));
+		i += ft_widetoa(ret + i, (wint_t) *(wstr++));
 	return (ret);
 }
 
@@ -71,23 +72,25 @@ static size_t	pf_get_wstrn(char **buf, const wchar_t *wstr, size_t size)
 
 	ret = 0;
 	tmp = 0;
-	if (!(tmp_str = ft_strnew(4 * ft_wstrlen(wstr))))
+	tmp_str = ft_strnew(4 * ft_wstrlen(wstr));
+	if (!tmp_str)
 		return (ret);
 	while (*wstr)
 	{
-		tmp = ft_widetoa(tmp_str + ret, (wint_t)*(wstr++));
+		tmp = ft_widetoa(tmp_str + ret, (wint_t) *(wstr++));
 		if (tmp + ret > size)
 			break ;
 		ret += tmp;
 	}
-	if (!(*buf = ft_strnew(ret)))
+	*buf = ft_strnew(ret);
+	if (!(*buf))
 		return (0);
 	ft_memcpy(*buf, tmp_str, ret);
 	ft_strdel(&tmp_str);
 	return (ret);
 }
 
-size_t			ft_wstrntomb(char **buf, const wchar_t *wstr, size_t size)
+size_t	ft_wstrntomb(char **buf, const wchar_t *wstr, size_t size)
 {
 	size_t	ret;
 

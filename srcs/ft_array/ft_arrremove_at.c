@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 14:29:31 by zweng             #+#    #+#             */
-/*   Updated: 2019/03/02 18:23:37 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:37:56 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_arritem	*ft_arrremove_at(t_array *arr, int index)
 	t_arritem	*ret;
 
 	if (!arr || (int)arr->current_size <= 0 || index < 0
-			|| index > (int)arr->current_size)
+		|| index > (int)arr->current_size)
 		return (NULL);
 	if (index == (int)arr->current_size - 1)
 	{
@@ -29,7 +29,7 @@ t_arritem	*ft_arrremove_at(t_array *arr, int index)
 	{
 		tmp = arr->table[index];
 		ft_memmove(arr->table + index, arr->table + index + 1,
-				sizeof(t_arritem) * (arr->current_size - index));
+			sizeof(t_arritem) * (arr->current_size - index));
 		arr->table[arr->current_size - 1] = tmp;
 		ret = arr->table + arr->current_size - 1;
 		arr->current_size--;

@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/25 13:37:51 by zweng             #+#    #+#             */
-/*   Updated: 2018/01/09 20:30:09 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/23 17:31:38 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_aux(long long int val, int base, char **p)
 	*(*p)++ = *(base_str + pf_abs(tmp));
 }
 
-char		*ft_itoa_base(long long int value, int base)
+char	*ft_itoa_base(long long int value, int base)
 {
 	char	*ret;
 	char	*p;

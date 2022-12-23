@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 13:08:56 by zweng             #+#    #+#             */
-/*   Updated: 2018/09/26 19:42:59 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/16 20:05:25 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** printf function
 */
 
-int		ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	int			ret;
@@ -31,7 +31,7 @@ int		ft_printf(const char *format, ...)
 **write printf string to file descriptor fd.
 */
 
-int		ft_dprintf(int fd, const char *format, ...)
+int	ft_dprintf(int fd, const char *format, ...)
 {
 	va_list		ap;
 	int			ret;
@@ -46,7 +46,7 @@ int		ft_dprintf(int fd, const char *format, ...)
 **write printf string to string buffer.
 */
 
-int		ft_asprintf(char **buf, const char *format, ...)
+int	ft_asprintf(char **buf, const char *format, ...)
 {
 	va_list		ap;
 	int			ret;
