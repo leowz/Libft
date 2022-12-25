@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:44:47 by zweng             #+#    #+#             */
-/*   Updated: 2022/12/23 15:50:44 by zweng            ###   ########.fr       */
+/*   Updated: 2022/12/25 16:56:33 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # define FUN_FAIL	(0)
 # define TRUE	 	(1)
 # define FALSE		(0)
+# define EXT_SUCS	(0)
+# define EXT_FAIL	(1)
+# define FUN_EXT(a)	(a == 0 ? 1 : 0)
+# define ABS(a,b)	(a > b ? a : b)
 
 typedef struct s_list
 {
@@ -68,6 +72,8 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+int					ft_isupper(int c);
+int					ft_islower(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 void				*ft_memalloc(size_t size);
